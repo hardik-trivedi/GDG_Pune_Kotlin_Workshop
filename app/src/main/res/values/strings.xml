@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GDG_Pune_Kotlin_Workshop</string>
+    <string name="settings">Settings</string>
+    <string name="pincode">Pincode</string>
 </resources>

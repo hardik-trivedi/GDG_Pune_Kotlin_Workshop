@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ten">10dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="txt_normal">15sp</dimen>
+    <dimen name="txt_large">20sp</dimen>
+    <dimen name="txt_x_large">30sp</dimen>
+    <dimen name="ic_weather_size">70dp</dimen>
+</resources>
