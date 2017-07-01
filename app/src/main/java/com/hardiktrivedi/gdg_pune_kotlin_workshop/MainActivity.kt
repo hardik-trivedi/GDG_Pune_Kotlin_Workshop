@@ -13,6 +13,7 @@ import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.coroutines.experimental.bg
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 
 class MainActivity : AppCompatActivity(), ToolbarManager, AnkoLogger {
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
@@ -36,7 +37,14 @@ class MainActivity : AppCompatActivity(), ToolbarManager, AnkoLogger {
 
     private fun showData(result: ForecastResult) {
         weatherList.layoutManager = LinearLayoutManager(this)
-        weatherList.adapter = WeatherListAdapter(result.list)
+        weatherList.adapter = WeatherListAdapter(result.list) {
+            startActivity<DetailActivity>(DetailActivity.NAME to result.city.name,
+                    DetailActivity.DESC to it.weather[0].description,
+                    DetailActivity.MIN_TEMP to it.temp.min,
+                    DetailActivity.MAX_TEMP to it.temp.max,
+                    DetailActivity.ICON to it.weather[0].icon,
+                    DetailActivity.DATE to it.dt)
+        }
         toolbarTitle = "${result.city.name} (${result.city.country})"
 
     }

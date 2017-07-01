@@ -13,10 +13,11 @@ import kotlinx.android.synthetic.main.weather_list_item.view.*
 /**
  * Created by hardik.trivedi on 24/06/17.
  */
-class WeatherListAdapter(val items: List<Forecast>) : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
+class WeatherListAdapter(val items: List<Forecast>, val callback: (Forecast) -> Unit) : RecyclerView.Adapter<WeatherListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.weather_list_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.weather_list_item, parent, false),
+                callback)
     }
 
     override fun getItemCount(): Int {
@@ -27,7 +28,7 @@ class WeatherListAdapter(val items: List<Forecast>) : RecyclerView.Adapter<Weath
         holder.showData(items[position])
     }
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val view: View, val callback: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
         fun showData(forecast: Forecast) {
             with(forecast) {
                 Picasso.with(itemView.context).load(String.format(WeatherApi.IMAGE_URL, weather[0].icon)).into(itemView.imgWeather)
@@ -37,6 +38,7 @@ class WeatherListAdapter(val items: List<Forecast>) : RecyclerView.Adapter<Weath
                     itemView.txtMinWeather.text = min.toString()
                     itemView.txtMaxWeather.text = max.toString()
                 }
+                itemView.setOnClickListener { callback(this) }
             }
         }
     }
