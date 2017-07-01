@@ -1,7 +1,6 @@
-package com.hardiktrivedi.kotlin_gdg_pune_workshop
+package com.hardiktrivedi.gdg_pune_kotlin_workshop
 
 import android.support.v7.widget.Toolbar
-import com.hardiktrivedi.gdg_pune_kotlin_workshop.R
 
 /**
  * Created by hardik.trivedi on 22/06/17.
