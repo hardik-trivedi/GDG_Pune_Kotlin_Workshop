@@ -8,34 +8,54 @@
     android:orientation="horizontal"
     android:padding="@dimen/ten">
 
-    <TextView
-        android:id="@+id/txtDay"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        tools:text="Jun 22, 2017 Thursday" />
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/txtDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/txt_large"
+            tools:text="Jun 22, 2017 Thursday" />
+
+        <TextView
+            android:id="@+id/txtDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/txt_normal"
+            tools:text="Jun 22, 2017 Thursday" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imgWeather"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/ic_weather_size"
+        android:layout_height="@dimen/ic_weather_size"
         android:src="@drawable/ic_weather_hail" />
 
     <TextView
         android:id="@+id/txtMinWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:drawablePadding="@dimen/two"
         android:drawableStart="@drawable/arrow_down"
         android:gravity="center"
-        android:textSize="15sp"
+        android:textSize="@dimen/txt_normal"
         tools:text="28" />
 
     <TextView
         android:id="@+id/txtMaxWeather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ten"
+        android:drawablePadding="@dimen/two"
         android:drawableStart="@drawable/arrow_up"
         android:gravity="center"
-        android:textSize="20sp"
+        android:textSize="@dimen/txt_large"
         tools:text="32" />
 </LinearLayout>

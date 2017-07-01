@@ -2,9 +2,11 @@ package com.hardiktrivedi.gdg_pune_kotlin_workshop
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.Toolbar
 import com.hardiktrivedi.kotlin_gdg_pune_workshop.data.remote.ForecastResult
 import com.hardiktrivedi.kotlin_gdg_pune_workshop.data.remote.WeatherApi
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.async
 import org.jetbrains.anko.AnkoLogger
@@ -32,9 +34,9 @@ class MainActivity : AppCompatActivity(), ToolbarManager, AnkoLogger {
     }
 
     private fun showData(result: ForecastResult) {
-        toast(result.list.size.toString())
-        //weatherList.adapter
-        toolbarTitle = "${result.list.size}"
+        weatherList.layoutManager = LinearLayoutManager(this)
+        weatherList.adapter = WeatherListAdapter(result.list)
+        toolbarTitle = "${result.city.name} (${result.city.country})"
 
     }
 }
