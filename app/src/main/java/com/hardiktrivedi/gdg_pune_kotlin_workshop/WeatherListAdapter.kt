@@ -32,7 +32,7 @@ class WeatherListAdapter(val items: List<Forecast>, val callback: (Forecast) -> 
         fun showData(forecast: Forecast) {
             with(forecast) {
                 Picasso.with(itemView.context).load(String.format(WeatherApi.IMAGE_URL, weather[0].icon)).into(itemView.imgWeather)
-                itemView.txtDay.text = dt.toStringDate()
+                itemView.txtDay.text = (dt*1000).toStringDate()
                 itemView.txtDesc.text = weather[0].description
                 with(temp) {
                     itemView.txtMinWeather.text = min.toString()

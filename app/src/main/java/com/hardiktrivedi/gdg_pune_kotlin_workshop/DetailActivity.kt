@@ -1,7 +1,7 @@
 package com.hardiktrivedi.gdg_pune_kotlin_workshop
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.TextView
 import com.hardiktrivedi.gdg_pune_kotlin_workshop.extensions.color
@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity(), ToolbarManager {
         val bundle = intent.extras
         toolbarTitle = bundle.getString(NAME)
         Picasso.with(this).load(String.format(WeatherApi.IMAGE_URL, bundle.getString(ICON))).into(imgWeather)
-        txtDay.text = bundle.getLong(DATE).toStringDate(DateFormat.FULL)
+        txtDay.text = (bundle.getLong(DATE)*1000).toStringDate(DateFormat.FULL)
         txtDesc.text = bundle.getString(DESC)
 
         showTemperature(bundle.getFloat(MIN_TEMP) to txtMinWeather, bundle.getFloat(MAX_TEMP) to txtMaxWeather)
